@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İnteraktif Premium Üyelik Karşılaştırma</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome İkonları -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 font-sans text-gray-800 pb-12">
+
+    <div class="max-w-4xl mx-auto my-8 bg-white shadow-xl rounded-2xl overflow-hidden">
+        
+        <!-- Üst Başlık -->
+        <div class="bg-slate-900 text-white p-4 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <button class="text-white text-lg hover:text-gray-300 transition"><i class="fa-solid fa-chevron-left"></i></button>
+                <h1 class="text-xl font-bold">Premium Üyelik Satın Al</h1>
+            </div>
+            <span class="bg-emerald-500 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider animate-pulse">Borsa Kapalı</span>
+        </div>
+
+        <!-- Arama ve Filtreleme Alanı -->
+        <div class="p-4 bg-gray-50 border-b border-gray-200 flex flex-col md:flex-row gap-3 justify-between items-center">
+            <div class="relative w-full md:w-1/2">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+                <input type="text" id="searchInput" placeholder="Özellik ara (örn: Yapay Zeka, Sinyal)..." 
+                    class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white">
+            </div>
+            <div class="text-xs text-gray-500">
+                Paket seçmek için sütun başlıklarına tıklayabilirsiniz.
+            </div>
+        </div>
+
+        <!-- Tablo Alanı -->
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse" id="comparisonTable">
+                <thead>
+                    <tr class="bg-gray-100 border-b border-gray-200 text-sm font-semibold text-gray-700">
+                        <th class="p-4 w-1/2">Özellikler</th>
+                        <th class="p-4 text-center w-1/6 cursor-pointer hover:bg-gray-200 transition" onclick="selectPlan('Standart', 0)">Standart</th>
+                        <th class="p-4 text-center w-1/6 cursor-pointer hover:bg-amber-100 text-amber-700 transition" onclick="selectPlan('PRO', 150)">PRO <span class="block text-[10px] font-normal">Seç</span></th>
+                        <th class="p-4 text-center w-1/6 cursor-pointer hover:bg-indigo-100 text-indigo-700 transition" onclick="selectPlan('ULTRA', 300)">ULTRA <span class="block text-[10px] font-normal">Seç</span></th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100 text-sm">
+                    
+                    <tr class="hover:bg-gray-50 feature-row">
+                        <td class="p-4 flex items-center space-x-3">
+                            <i class="fa-regular fa-comments text-blue-500 text-lg w-6 text-center"></i>
+                            <span class="font-medium">Ultra Üyelere VIP Sinyal Grubu</span>
+                        </td>
+                        <td class="p-4 text-center text-gray-300">-</td>
+                        <td class="p-4 text-center text-gray-300">-</td>
+                        <td class="p-4 text-center text-emerald-600 font-bold"><i class="fa-solid fa-check"></i></td>
+                    </tr>
+
+                    <tr class="hover:bg-gray-50 feature-row">
+                        <td class="p-4 flex items-center space-x-3">
+                            <i class="fa-solid fa-bullseye text-red-500 text-lg w-6 text-center"></i>
+                            <span class="font-medium">Canlı Teorik Eşleşme</span>
+                        </td>
+                        <td class="p-4 text-center text-emerald-600 font-bold"><i class="fa-solid fa-check"></i></td>
+                        <td class="p-4 text-center text-emerald-600 font-bold"><i class="fa-solid fa-check"></i></td>
+                        <td class="p-4 text-center text-emerald-600 font-bold"><i class="fa-solid fa-check"></i></td>
+                    </tr>
+
+                    <tr class="hover:bg-gray-50 feature-row">
+                        <td class="p-4 flex items-center space-x-3">
+                            <i class="fa-solid fa-ban text-red-400 text-lg w-6 text-center"></i>
+                            <span class="font-medium">Reklamsız Kullanım</span>
+                        </td>
+                        <td class="p-4 text-center text-emerald-600 font-bold"><i class="fa-solid fa-check"></i></td>
+                        <td class="p-4 text-center text-emerald-600 font-bold"><i class="fa-solid fa-check"></i></td>
+                        <td class="p-4 text-center text-emerald-600 font-bold"><i class="fa-solid fa-check"></i></td>
+                    </tr>
+
+                    <tr class="hover:bg-gray-50 feature-row">
+                        <td class="p-4 flex items-center space-x-3">
+                            <i class="fa-solid fa-robot text-purple-500 text-lg w-6 text-center"></i>
+                            <span class="font-medium">Yapay Zekâ Hisse & Fon Analizi</span>
+                        </td>
+                        <td class="p-4 text-center text-emerald-600 font-bold"><i class="fa-solid fa-check"></i></td>
+                        <td class="p-4 text-center text-amber-600 font-bold"><i class="fa-solid fa-check"></i></td>
+                        <td class="p-4 text-center text-indigo-600 font-bold"><i class="fa-solid fa-check"></i></td>
+                    </tr>
+
+                    <tr class="hover:bg-gray-50 feature-row">
+                        <td class="p-4 flex items-center space-x-3">
+                            <i class="fa-solid fa-laptop text-slate-700 text-lg w-6 text-center"></i>
+                            <span class="font-medium">2 Cihaz • PC/Mac/Tablet • Tam Ekran Özelliği</span>
+                        </td>
+                        <td class="p-4 text-center text-gray-300">-</td>
+                        <td class="p-4 text-center text-amber-600 font-bold"><i class="fa-solid fa-check"></i></td>
+                        <td class="p-4 text-center text-indigo-600 font-bold"><i class="fa-solid fa-check"></i></td>
+                    </tr>
+
+                    <tr class="hover:bg-gray-50 feature-row">
+                        <td class="p-4 flex items-center space-x-3">
+                            <i class="fa-solid fa-crown text-amber-500 text-lg w-6 text-center"></i>
+                            <span class="font-medium">ULTRA Üye Rozeti</span>
+                        </td>
+                        <td class="p-4 text-center text-gray-300">-</td>
+                        <td class="p-4 text-center text-gray-300">-</td>
+                        <td class="p-4 text-center text-indigo-600 font-bold"><i class="fa-solid fa-check"></i></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Alt Seçim ve İşlem Paneli -->
+        <div class="p-6 bg-gray-50 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div>
+                <span class="text-gray-500 text-sm">Seçilen Paket:</span>
+                <span id="selectedPlanName" class="font-bold text-lg text-indigo-600 ml-1">Seçilmedi</span>
+                <span id="selectedPlanPrice" class="text-sm text-gray-600 block">Lütfen bir paket seçin</span>
+            </div>
+            <button onclick="checkout()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-xl shadow-md transition duration-200 w-full md:w-auto">
+                Seçilen Paketi Satın Al
+            </button>
+        </div>
+
+    </div>
+
+    <!-- JavaScript Fonksiyonları -->
+    <script>
+        function selectPlan(planName, price) {
+            document.getElementById('selectedPlanName').innerText = planName + " Paket";
+            if (price === 0) {
+                document.getElementById('selectedPlanPrice').innerText = "Ücretsiz Plan";
+            } else {
+                document.getElementById('selectedPlanPrice').innerText = price + " TL / Aylık";
+            }
+        }
+
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+            let filter = this.value.toLowerCase();
+            let rows = document.querySelectorAll('.feature-row');
+
+            rows.forEach(row => {
+                let text = row.querySelector('span').innerText.toLowerCase();
+                if (text.includes(filter)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        });
+
+        function checkout() {
+            let plan = document.getElementById('selectedPlanName').innerText;
+            if (plan === "Seçilmedi") {
+                alert("Lütfen tablodan üst sütunlara tıklayarak bir paket seçin!");
+            } else {
+                alert(plan + " için ödeme sayfasına yönlendiriliyorsunuz...");
+            }
+        }
+    </script>
+
+</body>
+</html>
