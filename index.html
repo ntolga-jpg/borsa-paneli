@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Borsa Analiz ve Tarama Paneli</title>
+    <title>Borsa Pro - Canlı Analiz ve Tarama Paneli</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome İkonları -->
@@ -15,14 +15,14 @@
     <div class="max-w-md md:max-w-3xl mx-auto my-0 md:my-6 bg-slate-900 shadow-2xl md:rounded-2xl overflow-hidden min-h-screen md:min-h-0 flex flex-col justify-between border border-slate-800">
         
         <div>
-            <!-- Üst Bar (Borsa Durumu & Başlık) -->
+            <!-- Üst Bar -->
             <div class="bg-slate-950 text-white p-4 flex items-center justify-between sticky top-0 z-50 border-b border-slate-800">
                 <div class="flex items-center space-x-3">
-                    <h1 class="text-lg font-bold tracking-wide text-indigo-400">Borsa Analiz & Taramalar</h1>
+                    <h1 class="text-lg font-bold tracking-wide text-indigo-400">Borsa Pro · Canlı Sistem</h1>
                 </div>
                 <div class="flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-full">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span class="text-emerald-400 text-[10px] font-semibold uppercase tracking-wider">Borsa Kapalı</span>
+                    <span class="text-emerald-400 text-[10px] font-semibold uppercase tracking-wider">Sistem Aktif</span>
                 </div>
             </div>
 
@@ -32,16 +32,16 @@
                     <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
                         <i class="fa-solid fa-magnifying-glass text-sm"></i>
                     </span>
-                    <input type="text" id="searchInput" placeholder="Hızlı tarama veya özellik ara (örn: Tavan, Takas, Yapay Zeka)..." 
+                    <input type="text" id="searchInput" placeholder="Tarama veya özellik ara..." 
                         class="w-full pl-9 pr-4 py-2.5 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:border-indigo-500 shadow-sm transition">
                 </div>
             </div>
 
-            <!-- Araçlar / Özellikler Listesi (Grid Kartları) -->
+            <!-- Araçlar Grid Listesi -->
             <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-3" id="toolsGrid">
                 
-                <!-- Kart Örneği -->
-                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
+                <!-- Canlı Teorik Eşleşme -->
+                <div onclick="runFeature('teorik')" class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
                     <div class="flex items-center space-x-3">
                         <div class="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400 text-lg group-hover:scale-110 transition">
                             <i class="fa-solid fa-bullseye"></i>
@@ -54,7 +54,8 @@
                     <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
                 </div>
 
-                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
+                <!-- Yapay Zekâ Analizi -->
+                <div onclick="runFeature('ai')" class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
                     <div class="flex items-center space-x-3">
                         <div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400 text-lg group-hover:scale-110 transition">
                             <i class="fa-solid fa-robot"></i>
@@ -67,7 +68,8 @@
                     <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
                 </div>
 
-                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
+                <!-- Derin Kapsamlı AI Raporu -->
+                <div onclick="runFeature('ai')" class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
                     <div class="flex items-center space-x-3">
                         <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 text-lg group-hover:scale-110 transition">
                             <i class="fa-solid fa-file-lines"></i>
@@ -80,163 +82,8 @@
                     <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
                 </div>
 
-                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-lg group-hover:scale-110 transition">
-                            <i class="fa-solid fa-gem"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-semibold text-gray-200">Fon & Yabancı Akış Taraması</h3>
-                            <p class="text-[11px] text-gray-400">Yabancı takası ve fon hareketleri</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
-                </div>
-
-                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400 text-lg group-hover:scale-110 transition">
-                            <i class="fa-solid fa-boxes-stacked"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-semibold text-gray-200">Fonların Portföyündeki Hisseler</h3>
-                            <p class="text-[11px] text-gray-400">Hangi fon hangi hisseyi tutuyor?</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
-                </div>
-
-                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-lg bg-sky-500/10 flex items-center justify-center text-sky-400 text-lg group-hover:scale-110 transition">
-                            <i class="fa-solid fa-magnifying-glass-chart"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-semibold text-gray-200">Gelişmiş Takas Tarama</h3>
-                            <p class="text-[11px] text-gray-400">Kurum bazlı takas değişim analizleri</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
-                </div>
-
-                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-lg bg-teal-500/10 flex items-center justify-center text-teal-400 text-lg group-hover:scale-110 transition">
-                            <i class="fa-solid fa-chart-pie"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-semibold text-gray-200">Gelişmiş AKD Tarama</h3>
-                            <p class="text-[11px] text-gray-400">Aracı kurum dağılımı ve net alım/satım</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
-                </div>
-
-                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400 text-lg group-hover:scale-110 transition">
-                            <i class="fa-solid fa-scale-balanced"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-semibold text-gray-200">Hisse Karşılaştır</h3>
-                            <p class="text-[11px] text-gray-400">Çoklu rasyo ve grafik karşılaştırması</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
-                </div>
-
-                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-lg bg-yellow-500/10 flex items-center justify-center text-yellow-400 text-lg group-hover:scale-110 transition">
-                            <i class="fa-solid fa-bell"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-semibold text-gray-200">Hisse Sinyalleri + Anlık Bildirim</h3>
-                            <p class="text-[11px] text-gray-400">Teknik ve temel sinyal uyarıları</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
-                </div>
-
-                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-lg bg-amber-600/10 flex items-center justify-center text-amber-500 text-lg group-hover:scale-110 transition">
-                            <i class="fa-solid fa-bolt"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-semibold text-gray-200">Hacim Momentumu Sayfası</h3>
-                            <p class="text-[11px] text-gray-400">Hacmi ani patlayan hisseler</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
-                </div>
-
-                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center text-green-400 text-lg group-hover:scale-110 transition">
-                            <i class="fa-solid fa-arrow-trend-up"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-semibold text-gray-200">Fiyat Momentumu Sayfası</h3>
-                            <p class="text-[11px] text-gray-400">Güçlü trend yakalama ekranı</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
-                </div>
-
-                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-lg bg-rose-500/10 flex items-center justify-center text-rose-400 text-lg group-hover:scale-110 transition">
-                            <i class="fa-solid fa-radar"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-semibold text-gray-200">Piyasa Radarı · Anlık Hareketler</h3>
-                            <p class="text-[11px] text-gray-400">Canlı piyasa taramaları</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
-                </div>
-
-                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-lg bg-violet-500/10 flex items-center justify-center text-violet-400 text-lg group-hover:scale-110 transition">
-                            <i class="fa-solid fa-network-wired"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-semibold text-gray-200">Korelasyon & Eş Hareket Taraması</h3>
-                            <p class="text-[11px] text-gray-400">Birlikte hareket eden hisseler</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
-                </div>
-
-                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-400 text-lg group-hover:scale-110 transition">
-                            <i class="fa-solid fa-building-columns"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-semibold text-gray-200">Şirket Kartı Değişiklik Takibi</h3>
-                            <p class="text-[11px] text-gray-400">Sermaye, ortaklık ve faaliyet değişiklikleri</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
-                </div>
-
-                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-lg bg-pink-500/10 flex items-center justify-center text-pink-400 text-lg group-hover:scale-110 transition">
-                            <i class="fa-solid fa-right-left"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-semibold text-gray-200">Virman Yakalayıcı</h3>
-                            <p class="text-[11px] text-gray-400">Aracı kurum arası lot transfer takibi</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
-                </div>
-
-                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
+                <!-- Tavan & Taban Taraması -->
+                <div onclick="runFeature('tavan')" class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
                     <div class="flex items-center space-x-3">
                         <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-lg group-hover:scale-110 transition">
                             <i class="fa-solid fa-layer-group"></i>
@@ -249,7 +96,8 @@
                     <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
                 </div>
 
-                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
+                <!-- Patron Tahtacı KAP Radarı -->
+                <div onclick="runFeature('kap')" class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
                     <div class="flex items-center space-x-3">
                         <div class="w-10 h-10 rounded-lg bg-red-600/10 flex items-center justify-center text-red-500 text-lg group-hover:scale-110 transition">
                             <i class="fa-solid fa-user-secret"></i>
@@ -265,54 +113,106 @@
             </div>
         </div>
 
+        <!-- Sonuç / Çıktı Modalı -->
+        <div id="resultModal" class="hidden fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+            <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-2xl p-6 relative shadow-2xl">
+                <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+                <h3 id="modalTitle" class="text-base font-bold text-indigo-400 mb-3">Analiz Sonucu</h3>
+                <div id="modalContent" class="text-xs text-gray-300 space-y-2 max-h-96 overflow-y-auto bg-slate-950 p-4 rounded-xl border border-slate-800">
+                    Veriler yükleniyor...
+                </div>
+            </div>
+        </div>
+
         <!-- Alt Navigasyon Barı -->
         <div class="bg-slate-950 border-t border-slate-800 py-2.5 px-2 flex justify-around items-center fixed bottom-0 left-0 right-0 z-50 md:max-w-3xl md:mx-auto md:rounded-b-2xl shadow-2xl">
-            <a href="#" class="flex flex-col items-center text-indigo-400 text-[10px] font-semibold">
-                <i class="fa-solid fa-house text-base mb-1"></i>
-                PİYASA
-            </a>
-            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-indigo-400 text-[10px]">
-                <i class="fa-solid fa-bullseye text-base mb-1"></i>
-                RADAR
-            </a>
-            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-indigo-400 text-[10px]">
-                <i class="fa-solid fa-compass text-base mb-1"></i>
-                KEŞFET
-            </a>
-            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-indigo-400 text-[10px]">
-                <i class="fa-solid fa-landmark text-base mb-1"></i>
-                KURUM
-            </a>
-            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-indigo-400 text-[10px]">
-                <i class="fa-solid fa-chart-pie text-base mb-1"></i>
-                FON
-            </a>
-            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-indigo-400 text-[10px]">
-                <i class="fa-solid fa-briefcase text-base mb-1"></i>
-                PORTFÖY
-            </a>
+            <a href="#" class="flex flex-col items-center text-indigo-400 text-[10px] font-semibold"><i class="fa-solid fa-house text-base mb-1"></i>PİYASA</a>
+            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-indigo-400 text-[10px]"><i class="fa-solid fa-bullseye text-base mb-1"></i>RADAR</a>
+            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-indigo-400 text-[10px]"><i class="fa-solid fa-compass text-base mb-1"></i>KEŞFET</a>
+            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-indigo-400 text-[10px]"><i class="fa-solid fa-landmark text-base mb-1"></i>KURUM</a>
+            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-indigo-400 text-[10px]"><i class="fa-solid fa-chart-pie text-base mb-1"></i>FON</a>
+            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-indigo-400 text-[10px]"><i class="fa-solid fa-briefcase text-base mb-1"></i>PORTFÖY</a>
         </div>
 
     </div>
 
-    <!-- Anlık Arama ve Filtreleme Scripti -->
+    <!-- JavaScript Entegrasyon Mantığı -->
     <script>
+        const API_URL = "http://localhost:8000/api"; // Python sunucu adresin
+
+        async function runFeature(type) {
+            const modal = document.getElementById('resultModal');
+            const title = document.getElementById('modalTitle');
+            const content = document.getElementById('modalContent');
+            
+            modal.classList.remove('hidden');
+            content.innerHTML = "Arka plan motorundan veriler çekiliyor...";
+
+            try {
+                if (type === 'teorik') {
+                    title.innerText = "Canlı Teorik Eşleşme";
+                    let res = await fetch(`${API_URL}/teorik-eslesme`);
+                    let json = await res.json();
+                    content.innerHTML = json.data.map(item => `
+                        <div class="flex justify-between border-b border-slate-800 py-2">
+                            <span class="font-bold text-white">${item.symbol}</span>
+                            <span class="text-emerald-400">${item.fiyat} TL (%${item.fark_yuzde})</span>
+                        </div>
+                    `).join('');
+                } 
+                else if (type === 'ai') {
+                    title.innerText = "Yapay Zekâ Derin Raporu";
+                    let res = await fetch(`${API_URL}/ai-analiz`, {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({symbol: "THYAO", analysis_type: "deep"})
+                    });
+                    let json = await res.json();
+                    content.innerHTML = `
+                        <p class="font-bold text-indigo-300 text-sm">${json.rapor_basligi}</p>
+                        <p><strong class="text-white">Skor:</strong> ${json.teknik_skor}</p>
+                        <p><strong class="text-white">Temel Analiz:</strong> ${json.temel_analiz}</p>
+                        <p><strong class="text-white">AI Yorumu:</strong> ${json.yapay_zeka_yorumu}</p>
+                    `;
+                }
+                else if (type === 'tavan') {
+                    title.innerText = "Tavan & Taban Taraması";
+                    let res = await fetch(`${API_URL}/tavan-taban`);
+                    let json = await res.json();
+                    content.innerHTML = `
+                        <p><strong class="text-emerald-400">Tavan Olanlar:</strong> ${json.tavan_hisseler.join(', ')}</p>
+                        <p><strong class="text-amber-400">Tavana Yaklaşanlar:</strong> ${json.tavana_yaklasanlar.join(', ')}</p>
+                    `;
+                }
+                else if (type === 'kap') {
+                    title.innerText = "Patron & Tahtacı KAP Radarı";
+                    let res = await fetch(`${API_URL}/kap-radar`);
+                    let json = await res.json();
+                    content.innerHTML = json.son_bildirimler.map(b => `
+                        <div class="border-b border-slate-800 py-2">
+                            <span class="text-red-400 font-bold">[${b.saat}] ${b.sirket}</span>
+                            <p class="text-gray-300 mt-0.5">${b.aciklama}</p>
+                        </div>
+                    `).join('');
+                }
+            } catch (err) {
+                content.innerHTML = "<span class='text-red-400'>Sunucuya bağlanılamadı. Python backend (main.py) çalışır durumda mı?</span>";
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('resultModal').classList.add('hidden');
+        }
+
+        // Arama Filtresi
         document.getElementById('searchInput').addEventListener('keyup', function() {
             let filter = this.value.toLowerCase();
             let cards = document.querySelectorAll('.tool-card');
-
             cards.forEach(card => {
                 let title = card.querySelector('h3').innerText.toLowerCase();
-                let desc = card.querySelector('p').innerText.toLowerCase();
-                
-                if (title.includes(filter) || desc.includes(filter)) {
-                    card.style.display = "";
-                } else {
-                    card.style.display = "none";
-                }
+                card.style.display = title.includes(filter) ? "" : "none";
             });
         });
     </script>
-
 </body>
 </html>
