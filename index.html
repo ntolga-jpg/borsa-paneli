@@ -3,163 +3,315 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İnteraktif Premium Üyelik Karşılaştırma</title>
+    <title>Borsa Analiz ve Tarama Paneli</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome İkonları -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-gray-100 font-sans text-gray-800 pb-12">
+<body class="bg-slate-950 font-sans text-gray-100 pb-24">
 
-    <div class="max-w-4xl mx-auto my-8 bg-white shadow-xl rounded-2xl overflow-hidden">
+    <!-- Ana Konteyner -->
+    <div class="max-w-md md:max-w-3xl mx-auto my-0 md:my-6 bg-slate-900 shadow-2xl md:rounded-2xl overflow-hidden min-h-screen md:min-h-0 flex flex-col justify-between border border-slate-800">
         
-        <!-- Üst Başlık -->
-        <div class="bg-slate-900 text-white p-4 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <button class="text-white text-lg hover:text-gray-300 transition"><i class="fa-solid fa-chevron-left"></i></button>
-                <h1 class="text-xl font-bold">Premium Üyelik Satın Al</h1>
+        <div>
+            <!-- Üst Bar (Borsa Durumu & Başlık) -->
+            <div class="bg-slate-950 text-white p-4 flex items-center justify-between sticky top-0 z-50 border-b border-slate-800">
+                <div class="flex items-center space-x-3">
+                    <h1 class="text-lg font-bold tracking-wide text-indigo-400">Borsa Analiz & Taramalar</h1>
+                </div>
+                <div class="flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-full">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span class="text-emerald-400 text-[10px] font-semibold uppercase tracking-wider">Borsa Kapalı</span>
+                </div>
             </div>
-            <span class="bg-emerald-500 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider animate-pulse">Borsa Kapalı</span>
+
+            <!-- Arama Çubuğu -->
+            <div class="p-3 bg-slate-900/80 border-b border-slate-800 sticky top-[60px] z-40 backdrop-blur-md">
+                <div class="relative w-full">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+                        <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                    </span>
+                    <input type="text" id="searchInput" placeholder="Hızlı tarama veya özellik ara (örn: Tavan, Takas, Yapay Zeka)..." 
+                        class="w-full pl-9 pr-4 py-2.5 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:border-indigo-500 shadow-sm transition">
+                </div>
+            </div>
+
+            <!-- Araçlar / Özellikler Listesi (Grid Kartları) -->
+            <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-3" id="toolsGrid">
+                
+                <!-- Kart Örneği -->
+                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400 text-lg group-hover:scale-110 transition">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-200">Canlı Teorik Eşleşme</h3>
+                            <p class="text-[11px] text-gray-400">Seans öncesi ve kapanış eşleşmeleri</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
+                </div>
+
+                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400 text-lg group-hover:scale-110 transition">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-200">Yapay Zekâ Hisse & Fon Analizi</h3>
+                            <p class="text-[11px] text-gray-400">AI destekli öngörüler ve skorlar</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
+                </div>
+
+                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 text-lg group-hover:scale-110 transition">
+                            <i class="fa-solid fa-file-lines"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-200">Derin Kapsamlı AI Raporu</h3>
+                            <p class="text-[11px] text-gray-400">Detaylı bilanço ve şirket raporları</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
+                </div>
+
+                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-lg group-hover:scale-110 transition">
+                            <i class="fa-solid fa-gem"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-200">Fon & Yabancı Akış Taraması</h3>
+                            <p class="text-[11px] text-gray-400">Yabancı takası ve fon hareketleri</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
+                </div>
+
+                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400 text-lg group-hover:scale-110 transition">
+                            <i class="fa-solid fa-boxes-stacked"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-200">Fonların Portföyündeki Hisseler</h3>
+                            <p class="text-[11px] text-gray-400">Hangi fon hangi hisseyi tutuyor?</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
+                </div>
+
+                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-sky-500/10 flex items-center justify-center text-sky-400 text-lg group-hover:scale-110 transition">
+                            <i class="fa-solid fa-magnifying-glass-chart"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-200">Gelişmiş Takas Tarama</h3>
+                            <p class="text-[11px] text-gray-400">Kurum bazlı takas değişim analizleri</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
+                </div>
+
+                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-teal-500/10 flex items-center justify-center text-teal-400 text-lg group-hover:scale-110 transition">
+                            <i class="fa-solid fa-chart-pie"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-200">Gelişmiş AKD Tarama</h3>
+                            <p class="text-[11px] text-gray-400">Aracı kurum dağılımı ve net alım/satım</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
+                </div>
+
+                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400 text-lg group-hover:scale-110 transition">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-200">Hisse Karşılaştır</h3>
+                            <p class="text-[11px] text-gray-400">Çoklu rasyo ve grafik karşılaştırması</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
+                </div>
+
+                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-yellow-500/10 flex items-center justify-center text-yellow-400 text-lg group-hover:scale-110 transition">
+                            <i class="fa-solid fa-bell"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-200">Hisse Sinyalleri + Anlık Bildirim</h3>
+                            <p class="text-[11px] text-gray-400">Teknik ve temel sinyal uyarıları</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
+                </div>
+
+                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-amber-600/10 flex items-center justify-center text-amber-500 text-lg group-hover:scale-110 transition">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-200">Hacim Momentumu Sayfası</h3>
+                            <p class="text-[11px] text-gray-400">Hacmi ani patlayan hisseler</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
+                </div>
+
+                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center text-green-400 text-lg group-hover:scale-110 transition">
+                            <i class="fa-solid fa-arrow-trend-up"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-200">Fiyat Momentumu Sayfası</h3>
+                            <p class="text-[11px] text-gray-400">Güçlü trend yakalama ekranı</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
+                </div>
+
+                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-rose-500/10 flex items-center justify-center text-rose-400 text-lg group-hover:scale-110 transition">
+                            <i class="fa-solid fa-radar"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-200">Piyasa Radarı · Anlık Hareketler</h3>
+                            <p class="text-[11px] text-gray-400">Canlı piyasa taramaları</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
+                </div>
+
+                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-violet-500/10 flex items-center justify-center text-violet-400 text-lg group-hover:scale-110 transition">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-200">Korelasyon & Eş Hareket Taraması</h3>
+                            <p class="text-[11px] text-gray-400">Birlikte hareket eden hisseler</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
+                </div>
+
+                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-400 text-lg group-hover:scale-110 transition">
+                            <i class="fa-solid fa-building-columns"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-200">Şirket Kartı Değişiklik Takibi</h3>
+                            <p class="text-[11px] text-gray-400">Sermaye, ortaklık ve faaliyet değişiklikleri</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
+                </div>
+
+                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-pink-500/10 flex items-center justify-center text-pink-400 text-lg group-hover:scale-110 transition">
+                            <i class="fa-solid fa-right-left"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-200">Virman Yakalayıcı</h3>
+                            <p class="text-[11px] text-gray-400">Aracı kurum arası lot transfer takibi</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
+                </div>
+
+                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-lg group-hover:scale-110 transition">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-200">Tavan & Taban Taraması</h3>
+                            <p class="text-[11px] text-gray-400">Tavan / taban olan ve yaklaşan hisseler</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
+                </div>
+
+                <div class="tool-card bg-slate-950 hover:bg-slate-800/60 border border-slate-800 p-4 rounded-xl flex items-center justify-between cursor-pointer transition group">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-red-600/10 flex items-center justify-center text-red-500 text-lg group-hover:scale-110 transition">
+                            <i class="fa-solid fa-user-secret"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-200">Patron Tahtacı KAP Radarı</h3>
+                            <p class="text-[11px] text-gray-400">Pay alım/satım ve KAP bildirim takibi</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs group-hover:text-indigo-400 transition"></i>
+                </div>
+
+            </div>
         </div>
 
-        <!-- Arama ve Filtreleme Alanı -->
-        <div class="p-4 bg-gray-50 border-b border-gray-200 flex flex-col md:flex-row gap-3 justify-between items-center">
-            <div class="relative w-full md:w-1/2">
-                <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </span>
-                <input type="text" id="searchInput" placeholder="Özellik ara (örn: Yapay Zeka, Sinyal)..." 
-                    class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white">
-            </div>
-            <div class="text-xs text-gray-500">
-                Paket seçmek için sütun başlıklarına tıklayabilirsiniz.
-            </div>
-        </div>
-
-        <!-- Tablo Alanı -->
-        <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse" id="comparisonTable">
-                <thead>
-                    <tr class="bg-gray-100 border-b border-gray-200 text-sm font-semibold text-gray-700">
-                        <th class="p-4 w-1/2">Özellikler</th>
-                        <th class="p-4 text-center w-1/6 cursor-pointer hover:bg-gray-200 transition" onclick="selectPlan('Standart', 0)">Standart</th>
-                        <th class="p-4 text-center w-1/6 cursor-pointer hover:bg-amber-100 text-amber-700 transition" onclick="selectPlan('PRO', 150)">PRO <span class="block text-[10px] font-normal">Seç</span></th>
-                        <th class="p-4 text-center w-1/6 cursor-pointer hover:bg-indigo-100 text-indigo-700 transition" onclick="selectPlan('ULTRA', 300)">ULTRA <span class="block text-[10px] font-normal">Seç</span></th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-100 text-sm">
-                    
-                    <tr class="hover:bg-gray-50 feature-row">
-                        <td class="p-4 flex items-center space-x-3">
-                            <i class="fa-regular fa-comments text-blue-500 text-lg w-6 text-center"></i>
-                            <span class="font-medium">Ultra Üyelere VIP Sinyal Grubu</span>
-                        </td>
-                        <td class="p-4 text-center text-gray-300">-</td>
-                        <td class="p-4 text-center text-gray-300">-</td>
-                        <td class="p-4 text-center text-emerald-600 font-bold"><i class="fa-solid fa-check"></i></td>
-                    </tr>
-
-                    <tr class="hover:bg-gray-50 feature-row">
-                        <td class="p-4 flex items-center space-x-3">
-                            <i class="fa-solid fa-bullseye text-red-500 text-lg w-6 text-center"></i>
-                            <span class="font-medium">Canlı Teorik Eşleşme</span>
-                        </td>
-                        <td class="p-4 text-center text-emerald-600 font-bold"><i class="fa-solid fa-check"></i></td>
-                        <td class="p-4 text-center text-emerald-600 font-bold"><i class="fa-solid fa-check"></i></td>
-                        <td class="p-4 text-center text-emerald-600 font-bold"><i class="fa-solid fa-check"></i></td>
-                    </tr>
-
-                    <tr class="hover:bg-gray-50 feature-row">
-                        <td class="p-4 flex items-center space-x-3">
-                            <i class="fa-solid fa-ban text-red-400 text-lg w-6 text-center"></i>
-                            <span class="font-medium">Reklamsız Kullanım</span>
-                        </td>
-                        <td class="p-4 text-center text-emerald-600 font-bold"><i class="fa-solid fa-check"></i></td>
-                        <td class="p-4 text-center text-emerald-600 font-bold"><i class="fa-solid fa-check"></i></td>
-                        <td class="p-4 text-center text-emerald-600 font-bold"><i class="fa-solid fa-check"></i></td>
-                    </tr>
-
-                    <tr class="hover:bg-gray-50 feature-row">
-                        <td class="p-4 flex items-center space-x-3">
-                            <i class="fa-solid fa-robot text-purple-500 text-lg w-6 text-center"></i>
-                            <span class="font-medium">Yapay Zekâ Hisse & Fon Analizi</span>
-                        </td>
-                        <td class="p-4 text-center text-emerald-600 font-bold"><i class="fa-solid fa-check"></i></td>
-                        <td class="p-4 text-center text-amber-600 font-bold"><i class="fa-solid fa-check"></i></td>
-                        <td class="p-4 text-center text-indigo-600 font-bold"><i class="fa-solid fa-check"></i></td>
-                    </tr>
-
-                    <tr class="hover:bg-gray-50 feature-row">
-                        <td class="p-4 flex items-center space-x-3">
-                            <i class="fa-solid fa-laptop text-slate-700 text-lg w-6 text-center"></i>
-                            <span class="font-medium">2 Cihaz • PC/Mac/Tablet • Tam Ekran Özelliği</span>
-                        </td>
-                        <td class="p-4 text-center text-gray-300">-</td>
-                        <td class="p-4 text-center text-amber-600 font-bold"><i class="fa-solid fa-check"></i></td>
-                        <td class="p-4 text-center text-indigo-600 font-bold"><i class="fa-solid fa-check"></i></td>
-                    </tr>
-
-                    <tr class="hover:bg-gray-50 feature-row">
-                        <td class="p-4 flex items-center space-x-3">
-                            <i class="fa-solid fa-crown text-amber-500 text-lg w-6 text-center"></i>
-                            <span class="font-medium">ULTRA Üye Rozeti</span>
-                        </td>
-                        <td class="p-4 text-center text-gray-300">-</td>
-                        <td class="p-4 text-center text-gray-300">-</td>
-                        <td class="p-4 text-center text-indigo-600 font-bold"><i class="fa-solid fa-check"></i></td>
-                    </tr>
-
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Alt Seçim ve İşlem Paneli -->
-        <div class="p-6 bg-gray-50 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between gap-4">
-            <div>
-                <span class="text-gray-500 text-sm">Seçilen Paket:</span>
-                <span id="selectedPlanName" class="font-bold text-lg text-indigo-600 ml-1">Seçilmedi</span>
-                <span id="selectedPlanPrice" class="text-sm text-gray-600 block">Lütfen bir paket seçin</span>
-            </div>
-            <button onclick="checkout()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-xl shadow-md transition duration-200 w-full md:w-auto">
-                Seçilen Paketi Satın Al
-            </button>
+        <!-- Alt Navigasyon Barı -->
+        <div class="bg-slate-950 border-t border-slate-800 py-2.5 px-2 flex justify-around items-center fixed bottom-0 left-0 right-0 z-50 md:max-w-3xl md:mx-auto md:rounded-b-2xl shadow-2xl">
+            <a href="#" class="flex flex-col items-center text-indigo-400 text-[10px] font-semibold">
+                <i class="fa-solid fa-house text-base mb-1"></i>
+                PİYASA
+            </a>
+            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-indigo-400 text-[10px]">
+                <i class="fa-solid fa-bullseye text-base mb-1"></i>
+                RADAR
+            </a>
+            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-indigo-400 text-[10px]">
+                <i class="fa-solid fa-compass text-base mb-1"></i>
+                KEŞFET
+            </a>
+            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-indigo-400 text-[10px]">
+                <i class="fa-solid fa-landmark text-base mb-1"></i>
+                KURUM
+            </a>
+            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-indigo-400 text-[10px]">
+                <i class="fa-solid fa-chart-pie text-base mb-1"></i>
+                FON
+            </a>
+            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-indigo-400 text-[10px]">
+                <i class="fa-solid fa-briefcase text-base mb-1"></i>
+                PORTFÖY
+            </a>
         </div>
 
     </div>
 
-    <!-- JavaScript Fonksiyonları -->
+    <!-- Anlık Arama ve Filtreleme Scripti -->
     <script>
-        function selectPlan(planName, price) {
-            document.getElementById('selectedPlanName').innerText = planName + " Paket";
-            if (price === 0) {
-                document.getElementById('selectedPlanPrice').innerText = "Ücretsiz Plan";
-            } else {
-                document.getElementById('selectedPlanPrice').innerText = price + " TL / Aylık";
-            }
-        }
-
         document.getElementById('searchInput').addEventListener('keyup', function() {
             let filter = this.value.toLowerCase();
-            let rows = document.querySelectorAll('.feature-row');
+            let cards = document.querySelectorAll('.tool-card');
 
-            rows.forEach(row => {
-                let text = row.querySelector('span').innerText.toLowerCase();
-                if (text.includes(filter)) {
-                    row.style.display = "";
+            cards.forEach(card => {
+                let title = card.querySelector('h3').innerText.toLowerCase();
+                let desc = card.querySelector('p').innerText.toLowerCase();
+                
+                if (title.includes(filter) || desc.includes(filter)) {
+                    card.style.display = "";
                 } else {
-                    row.style.display = "none";
+                    card.style.display = "none";
                 }
             });
         });
-
-        function checkout() {
-            let plan = document.getElementById('selectedPlanName').innerText;
-            if (plan === "Seçilmedi") {
-                alert("Lütfen tablodan üst sütunlara tıklayarak bir paket seçin!");
-            } else {
-                alert(plan + " için ödeme sayfasına yönlendiriliyorsunuz...");
-            }
-        }
     </script>
 
 </body>
